@@ -11,6 +11,10 @@ class Lane
     @name
   end
 
+  def ==(lane)
+    self.eql?(lane)
+  end
+
   def eql?(lane)
     self.name == lane.name
   end    
