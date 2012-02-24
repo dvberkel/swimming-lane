@@ -7,10 +7,6 @@ class Lane
     @screen = screen
   end
 
-  def name
-    @name
-  end
-
   def renderOn(brush)
     brush.render :lane, @screen
   end
