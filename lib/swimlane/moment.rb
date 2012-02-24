@@ -1,23 +1,17 @@
 require 'set'
 
 class Moment
-  attr_reader :lanes
+  attr_reader :lanes, :transitions
   def initialize(*lanes)
-    transistions = lanes.first
-    lanes = lanes.slice(1..-1) || []
-    @lanes = Set.new lanes
-    if (transistions.is_a? Hash)
-      @transitions = transistions
-      @transitions.each {|key, value|
-        @lanes.add key
-        @lanes.add value
-      }
-    else
-      @lanes.add(transistions)
+    @transitions = lanes.first || {}
+    @lanes = Set.new (lanes.slice(1..-1) || [])
+    if (not @transitions.is_a? Hash)
+      @lanes.add(@transitions)
+      @transitions = {}
     end
-  end
-  
-  def transitions
-    @transitions
+    @transitions.each {|key, value|
+      @lanes.add key
+      @lanes.add value
+    }
   end
 end
