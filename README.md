@@ -54,3 +54,29 @@ Whenever we work on the project we issue the following command
 
     > rvm use 1.9.2@swim-lane
 
+### Bundler
+
+We are using 
+[bundler](http://gembundler.com/ "Homepage for bundler")
+to manage our applications dependencies. It can be installed with the
+following command
+
+    > gem install bundler
+
+### Gem
+
+We try to follow the project structure as detailed by a RubyGem
+[manual](http://docs.rubygems.org/read/chapter/24 "Structure of gem")
+
+    swimlane/
+    |-- lib/
+    |   |-- swimlane.rb  
+    |   |-- swimlane/
+    |   |   |-- source1.rb
+    |   |   |-- source2.rb
+    |-- test/
+    |-- README.md
+    |-- Rakefile
+    |-- gem.gemspec
+
+This allows us to eventually create a gem from this project. 
