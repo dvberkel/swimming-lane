@@ -1,7 +1,10 @@
+require 'screen'
+
 class Lane
-  attr_reader :name
-  def initialize(name)
+  attr_reader :name, :screen
+  def initialize(name, screen = NullScreen.new)
     @name = name
+    @screen = screen
   end
 
   def name
