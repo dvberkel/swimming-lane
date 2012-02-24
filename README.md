@@ -78,9 +78,15 @@ We try to follow the project structure as detailed by a RubyGem
     |   |-- swimlane/
     |   |   |-- source1.rb
     |   |   |-- source2.rb
-    |-- test/
+    |-- spec/
     |-- README.md
     |-- Rakefile
     |-- swimlane.gemspec
 
 This allows us to eventually create a gem from this project. 
+
+### Rake
+
+We use 
+[rake](http://rake.rubyforge.org/ "Homepage for rake; Ruby Make")
+to automate tasks.
