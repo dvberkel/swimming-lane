@@ -34,4 +34,14 @@ describe "A diagram" do
 
     @diagram.lanes.should == [Lane.new("a"), Lane.new("b")].to_set
   end
+
+  it "should allow iteration of moments" do
+    @diagram.add(Moment.new)
+    @diagram.add(Moment.new)
+    count = 0
+
+    @diagram.moments {|moment| count += 1}
+
+    count.should == 2
+  end
 end
