@@ -28,6 +28,7 @@ Goals
 The goals for this project are stated below.
 
 Create
+
 * a [Domain Specific
   Language](http://en.wikipedia.org/wiki/Domain-specific_language
   "Wikipedia on DSL's") (DSL) which describes swimming lanes.
