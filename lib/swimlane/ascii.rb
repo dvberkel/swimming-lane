@@ -17,6 +17,8 @@ class AsciiBrush
       @representation << "| "
       arguments[0].renderOn self
       @representation << " | "
+    elsif token == :inbetween
+      @representation << "\n"
     end
   end
 

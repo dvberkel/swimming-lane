@@ -19,4 +19,11 @@ class Diagram
     self.moments {|moment| lanes.merge(moment.lanes)}
     lanes
   end
+
+  def renderOn(brush)
+    self.moments {|moment|
+      moment.renderOn brush
+      brush.render :inbetween
+    }
+  end
 end
