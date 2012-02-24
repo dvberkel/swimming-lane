@@ -11,6 +11,10 @@ class Lane
     @name
   end
 
+  def renderOn(brush)
+    brush.render :lane, @screen
+  end
+
   def ==(lane)
     self.eql?(lane)
   end
@@ -21,5 +25,11 @@ class Lane
 
   def hash
     @name.hash
+  end
+end
+
+class NullLane < Lane
+  def initialize
+    super("")
   end
 end

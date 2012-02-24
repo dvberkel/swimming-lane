@@ -14,4 +14,22 @@ class Moment
       @lanes.add value
     }
   end
+  
+  def laneLike(aLane)
+    result = NullLane.new
+    @lanes.each { |lane|
+      if lane == aLane
+        result = lane
+        break
+      end
+    }
+    result
+  end
+
+  def renderOn(brush)
+    brush.lanes { |this|
+      lane = self.laneLike this
+      lane.renderOn brush
+    }
+  end
 end

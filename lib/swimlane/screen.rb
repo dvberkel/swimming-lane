@@ -4,6 +4,10 @@ class Screen
     @description = description
   end
 
+  def renderOn(brush)
+    brush.render :screen, @description
+  end
+
   def ==(screen)
     self.eql?(screen)
   end
@@ -18,4 +22,7 @@ class Screen
 end
 
 class NullScreen
+  def renderOn(brush)
+    brush.render :empty
+  end
 end
