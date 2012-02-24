@@ -63,6 +63,10 @@ following command
 
     > gem install bundler
 
+To retrieve all the dependency run
+
+    > bundle install
+
 ### Gem
 
 We try to follow the project structure as detailed by a RubyGem
