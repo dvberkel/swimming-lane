@@ -1,6 +1,7 @@
 require 'set'
 
 class Diagram
+  attr_reader :lanes
   def initialize
     @lanes = Set.new
   end
