@@ -81,6 +81,6 @@ We try to follow the project structure as detailed by a RubyGem
     |-- test/
     |-- README.md
     |-- Rakefile
-    |-- gem.gemspec
+    |-- swimlane.gemspec
 
 This allows us to eventually create a gem from this project. 
