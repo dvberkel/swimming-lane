@@ -12,6 +12,6 @@ end
 
 desc "Run rspec on the spec directory"
 RSpec::Core::RakeTask.new('rspec') do |task|
-  task.rspec_opts = ['-I lib']
+  task.rspec_opts = ['-I lib/swimlane']
   task.pattern = 'spec/**/*_spec.rb'
 end
