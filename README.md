@@ -35,3 +35,22 @@ Create
 * a rich object model which models swimming lanes.
 * various views which display the modeled swimming lanes.
 
+Environment
+-----------
+
+### Ruby
+
+We will be using 
+[Ruby](http://www.ruby-lang.org/en/ "Homepage of Ruby Programming Language")
+and the Ruby Version Manager 
+([rvm](http://beginrescueend.com/ "Homepage of rvm")). We are working
+in with a gemset to contain the influence of installed gems. Our setup
+is detailed below.
+
+    > rvm use 1.9.2
+    > rvm gemset create swim-lane
+
+Whenever we work on the project we issue the following command
+
+    > rvm use 1.9.2@swim-lane
+
