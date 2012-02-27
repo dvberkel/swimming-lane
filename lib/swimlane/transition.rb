@@ -5,10 +5,17 @@ class Transition
     @to = to
   end
 
+  def renderOn(brush)
+    brush.render :transition, true
+  end
+
   def ==(lane)
     self.from == lane.from and self.to == lane.to
   end
 end
 
 class NullTransition
+  def renderOn(brush)
+    brush.render :empty
+  end
 end

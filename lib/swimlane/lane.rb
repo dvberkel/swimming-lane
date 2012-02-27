@@ -14,7 +14,7 @@ class Lane
   end
 
   def renderOn(brush)
-    brush.render :lane, @screen
+    brush.render :lane, @screen, @transition
   end
 
   def ==(lane)

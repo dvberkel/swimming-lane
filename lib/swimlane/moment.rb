@@ -15,6 +15,11 @@ class Moment
       @lanes.add key
       @lanes.add value
     }
+    @transitions.each {|key, value|
+      transitionKey = laneLike(key)
+      transitionValue = laneLike(value)
+      transitionKey.transitionTo(transitionValue)
+    }
     @inFlow = NullFlow.new
     @outFlow = FinishFlow.new
   end
@@ -45,7 +50,6 @@ class Moment
     brush.lanes { |this|
       lane = self.laneLike this
       lane.renderOn brush
-      brush.render :transition, @transitions.has_key?(lane)
     }
     brush.render :inbetween
     outFlow.renderOn brush
