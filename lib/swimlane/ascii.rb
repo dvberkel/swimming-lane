@@ -17,6 +17,10 @@ class AsciiBrush
       @representation << "| "
       arguments[0].renderOn self
       @representation << " |"
+    elsif token == :flow
+      @representation << "| "
+      @representation << (arguments[0] ? "|" : " ")
+      @representation << " | "
     elsif token == :transition
       @representation << (arguments[0] ? "-" : " ")
     elsif token == :before
@@ -27,11 +31,7 @@ class AsciiBrush
       currentLane, last = arguments[0], arguments[1]
       if (not last and @lanes.include?(currentLane))
         @lanes.each {|lane|
-          if currentLane == lane
-            @representation << "| | | "
-          else
-            @representation << "|   | "
-          end
+          self.render :flow, currentLane == lane
         }
         @representation << "\n"
       end
