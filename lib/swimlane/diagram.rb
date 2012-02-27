@@ -1,7 +1,7 @@
 require 'set'
 
 class Diagram
-  attr_reader :lanes, :start
+  attr_reader :start
   def initialize(start = NullLane.new)
     @moments = []
     @start = start
@@ -13,12 +13,6 @@ class Diagram
 
   def moments
     @moments.each {|moment| yield moment}
-  end
-
-  def lanes
-    lanes = Set.new
-    self.moments {|moment| lanes.merge(moment.lanes)}
-    lanes
   end
 
   def renderOn(brush)

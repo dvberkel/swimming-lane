@@ -12,27 +12,22 @@ describe "A diagram" do
     @diagram.should_not be nil
   end
 
-  it "should have no lanes to start with" do
-    @diagram.lanes.should == [].to_set
-  end
-
-  it "should have the lane introduced by a moment" do
+  it "should accept moment with one lane" do
     @diagram.add(Moment.new(Lane.new("a")))
+    count = 0
 
-    @diagram.lanes.should == [Lane.new("a")].to_set
+    @diagram.moments {|moment| count += 1}
+
+    count.should == 1
   end
 
-  it "should have all the lanes introduced by a moment" do
+  it "should accept a moment with two lanes" do
     @diagram.add(Moment.new(Lane.new("a"), Lane.new("b")))
+    count = 0
 
-    @diagram.lanes.should == [Lane.new("a"), Lane.new("b")].to_set
-  end
+    @diagram.moments {|moment| count += 1}
 
-  it "should have all the lanes introduced, even by different moments" do
-    @diagram.add(Moment.new(Lane.new("a")))
-    @diagram.add(Moment.new(Lane.new("b")))
-
-    @diagram.lanes.should == [Lane.new("a"), Lane.new("b")].to_set
+    count.should == 1
   end
 
   it "should allow iteration of moments" do
