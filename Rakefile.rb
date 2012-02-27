@@ -19,4 +19,5 @@ end
 desc "Run travis-lint on .travis.yml"
 task :lint do
   system("bundle exec travis-lint")
+  raise "travis-lint failed!" unless $?.exitstatus == 0
 end
