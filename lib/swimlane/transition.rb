@@ -15,6 +15,10 @@ class Transition
 end
 
 class NullTransition
+  def to
+    nil
+  end
+
   def renderOn(brush)
     brush.render :empty
   end
