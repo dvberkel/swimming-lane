@@ -14,6 +14,10 @@ class Moment
       @lanes.add value
     }
   end
+
+  def nextLane(currentLane)
+    @transitions[currentLane] || currentLane
+  end
   
   def laneLike(aLane)
     result = NullLane.new
