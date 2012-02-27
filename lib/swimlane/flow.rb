@@ -21,6 +21,13 @@ class StartFlow < Flow
   end
 end
 
+class FinishFlow
+  def renderOn(brush)
+    brush.lanes { brush.render :after }
+    brush.render :inbetween
+  end
+end
+
 class NullFlow
   def renderOn(brush)
     # do nothing

@@ -25,6 +25,5 @@ class Diagram
     self.moments {|moment|
       moment.renderOn brush
     }
-    brush.render :after
   end
 end

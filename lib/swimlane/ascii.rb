@@ -28,8 +28,7 @@ class AsciiBrush
     elsif token == :inbetween
       @representation << "\n"
     elsif token == :after
-      lanes {@representation << "|___| "}
-      @representation << "\n"
+      @representation << "|___| "
     end
   end
 

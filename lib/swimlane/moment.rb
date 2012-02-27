@@ -16,7 +16,7 @@ class Moment
       @lanes.add value
     }
     @inFlow = NullFlow.new
-    @outFlow = NullFlow.new
+    @outFlow = FinishFlow.new
   end
 
   def flowTo(moment)
