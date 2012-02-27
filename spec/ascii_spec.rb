@@ -36,4 +36,17 @@ describe "An ascii brush" do
 
     brush.to_s.should == ".___. .___. \n| * | |   | \n|   | | * | \n|___| |___| \n"
   end
+
+  it "should brush Diagrams in order of Moments with transitions" do
+    brush = AsciiBrush.new(Lane.new("a"), Lane.new("b"), Lane.new("c"))
+    diagram = Diagram.new(Lane.new("a"))
+    diagram.add(Moment.new(Lane.new("a", Screen.new("any"))))
+    diagram.add(Moment.new({Lane.new("a") => Lane.new("b")}, Lane.new("a", Screen.new("any")), Lane.new("b", Screen.new("any"))))
+    diagram.add(Moment.new({Lane.new("b") => Lane.new("c")},Lane.new("c", Screen.new("any")), Lane.new("b", Screen.new("any"))))
+
+    
+    diagram.renderOn brush
+
+    brush.to_s.should == ".___. .___. .___. \n| * | |   | |   | \n| * | | * | |   | \n|   | | * | | * | \n|___| |___| |___| \n"
+  end
 end
