@@ -34,7 +34,12 @@ describe "An ascii brush" do
     
     diagram.renderOn brush
 
-    brush.to_s.should == ".___. .___. \n| * | |   | \n|   | | * | \n|___| |___| \n"
+    brush.to_s.should == <<DESCRIPTION
+.___. .___. 
+| * | |   | 
+|   | | * | 
+|___| |___| 
+DESCRIPTION
   end
 
   it "should brush Diagrams in order of Moments with transitions" do
@@ -47,6 +52,12 @@ describe "An ascii brush" do
     
     diagram.renderOn brush
 
-    brush.to_s.should == ".___. .___. .___. \n| * | |   | |   | \n| * | | * | |   | \n|   | | * | | * | \n|___| |___| |___| \n"
+    brush.to_s.should == <<DESCRIPTION
+.___. .___. .___. 
+| * | |   | |   | 
+| * | | * | |   | 
+|   | | * | | * | 
+|___| |___| |___| 
+DESCRIPTION
   end
 end
