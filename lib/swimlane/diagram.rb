@@ -19,9 +19,8 @@ class Diagram
     brush.render :before
     currentLane, count = @start, 0
     self.moments {|moment|
-      count += 1
       moment.renderOn brush
-      currentLane = moment.nextLane(currentLane)
+      currentLane, count = moment.nextLane(currentLane), count + 1
       brush.render :inbetween, currentLane, count == @moments.length
     }
     brush.render :after
