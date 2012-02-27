@@ -17,6 +17,7 @@ class AsciiBrush
       @representation << "| "
       arguments[0].renderOn self
       @representation << " |"
+      arguments[1].renderOn self
     elsif token == :flow
       @representation << "| "
       @representation << (arguments[0] ? "|" : " ")

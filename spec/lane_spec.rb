@@ -16,4 +16,13 @@ describe "A lane" do
 
     actual.should == expected
   end
+
+  it "should be able to transition to other lane" do
+    any = Lane.new("any")
+    other = Lane.new("other")
+    
+    any = any.transitionTo(Lane.new("other"))
+
+    any.transition.should == Transition.new(any, other)
+  end
 end

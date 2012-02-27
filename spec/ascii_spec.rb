@@ -51,8 +51,8 @@ DESCRIPTION
     brush = AsciiBrush.new(Lane.new("a"), Lane.new("b"), Lane.new("c"))
     diagram = Diagram.new(Lane.new("a"))
     diagram.add(Moment.new(Lane.new("a", Screen.new("any"))))
-    diagram.add(Moment.new({Lane.new("a") => Lane.new("b")}, Lane.new("a", Screen.new("any")), Lane.new("b", Screen.new("any"))))
-    diagram.add(Moment.new({Lane.new("b") => Lane.new("c")},Lane.new("c", Screen.new("any")), Lane.new("b", Screen.new("any"))))
+    diagram.add(Moment.new(Lane.new("a", Screen.new("any")).transitionTo(Lane.new("b")), Lane.new("b", Screen.new("any"))))
+    diagram.add(Moment.new(Lane.new("c", Screen.new("any")), Lane.new("b", Screen.new("any")).transitionTo(Lane.new("c"))))
 
     
     diagram.renderOn brush
