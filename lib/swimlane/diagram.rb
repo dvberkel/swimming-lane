@@ -17,11 +17,12 @@ class Diagram
 
   def renderOn(brush)
     brush.render :before
-    currentLane = @start
+    currentLane, count = @start, 0
     self.moments {|moment|
+      count += 1
       moment.renderOn brush
       currentLane = moment.nextLane(currentLane)
-      brush.render :inbetween, currentLane
+      brush.render :inbetween, currentLane, count == @moments.length
     }
     brush.render :after
   end

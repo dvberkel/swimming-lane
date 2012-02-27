@@ -24,8 +24,8 @@ class AsciiBrush
       @representation << "\n"
     elsif token == :inbetween
       @representation << "\n"
-      currentLane = arguments[0]
-      if (@lanes.include?(currentLane))
+      currentLane, last = arguments[0], arguments[1]
+      if (not last and @lanes.include?(currentLane))
         @lanes.each {|lane|
           if currentLane == lane
             @representation << "| | | "
