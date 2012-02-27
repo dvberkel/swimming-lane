@@ -8,7 +8,12 @@ class Diagram
   end
 
   def add(moment)
+    previousMoment.flowTo(moment)
     @moments << moment
+  end
+
+  def previousMoment
+    @moments[-1] || NullMoment.new(@start)
   end
 
   def moments

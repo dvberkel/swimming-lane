@@ -15,6 +15,10 @@ class Moment
     }
   end
 
+  def flowTo(moment)
+    
+  end
+
   def nextLane(currentLane)
     @transitions[currentLane] || currentLane
   end
@@ -36,5 +40,15 @@ class Moment
       lane.renderOn brush
       brush.render :transition, @transitions.has_key?(lane)
     }
+  end
+end
+
+class NullMoment
+  def initialize(start)
+    @start = start
+  end
+
+  def flowTo(moment)
+    
   end
 end
