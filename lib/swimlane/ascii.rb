@@ -24,7 +24,7 @@ class AsciiBrush
     elsif token == :transition
       @representation << (arguments[0] ? "-" : " ")
     elsif token == :before
-      lanes {@representation << ".___. "}
+      @representation << ".___. "
     elsif token == :inbetween
       @representation << "\n"
     elsif token == :after

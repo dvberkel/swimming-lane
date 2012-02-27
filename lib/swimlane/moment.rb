@@ -58,7 +58,7 @@ class NullMoment
   end
 
   def flowTo(moment)
-    flow = Flow.new(@start)
+    flow = StartFlow.new(@start)
     moment.inFlow = flow    
   end
 end

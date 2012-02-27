@@ -21,7 +21,7 @@ class Diagram
   end
 
   def renderOn(brush)
-    brush.render :before
+    @moments[0].inFlow.renderOn brush
     self.moments {|moment|
       moment.renderOn brush
     }

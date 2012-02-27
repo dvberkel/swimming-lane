@@ -11,6 +11,16 @@ class Flow
   end
 end
 
+class StartFlow < Flow
+  def initialize(start)
+    super(start)
+  end
+
+  def renderOn(brush)
+    brush.lanes { brush.render :before }
+  end
+end
+
 class NullFlow
   def renderOn(brush)
     # do nothing
