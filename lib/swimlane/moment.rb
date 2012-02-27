@@ -15,8 +15,8 @@ class Moment
       @lanes.add key
       @lanes.add value
     }
-    @inFlow = NullFlow
-    @outFlow = NullFlow
+    @inFlow = NullFlow.new
+    @outFlow = NullFlow.new
   end
 
   def flowTo(moment)
@@ -46,6 +46,7 @@ class Moment
       lane.renderOn brush
       brush.render :transition, @transitions.has_key?(lane)
     }
+    outFlow.renderOn brush
   end
 end
 
