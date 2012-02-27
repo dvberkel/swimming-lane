@@ -9,6 +9,10 @@ class Lane
     @transition = NullTransition.new
   end
 
+  def transitionTo(lane)
+    @transition = Transition.new(self, lane)
+  end
+
   def renderOn(brush)
     brush.render :lane, @screen
   end
