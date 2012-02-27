@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bundler"
   spec.add_dependency "rake"
   spec.add_dependency "rspec"
+  spec.add_dependency "travis-lint"
 
   spec.files = `git ls-files`.split("\n")
   spec.require_path = 'lib'
