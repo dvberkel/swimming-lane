@@ -1,7 +1,9 @@
 require 'set'
+require 'flow'
 
 class Moment
   attr_reader :lanes, :transitions
+  attr_accessor :inFlow, :outFlow
   def initialize(*lanes)
     @transitions = lanes.first || {}
     @lanes = Set.new (lanes.slice(1..-1) || [])
@@ -13,10 +15,14 @@ class Moment
       @lanes.add key
       @lanes.add value
     }
+    @inFlow = NullFlow
+    @outFlow = NullFlow
   end
 
   def flowTo(moment)
-    
+    flow = Flow.new(nextLane(inFlow.lane))
+    outFlow = flow
+    moment.inFlow = flow
   end
 
   def nextLane(currentLane)
@@ -49,6 +55,7 @@ class NullMoment
   end
 
   def flowTo(moment)
-    
+    flow = Flow.new(@start)
+    moment.inFlow = flow    
   end
 end
