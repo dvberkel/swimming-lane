@@ -16,9 +16,11 @@ class Diagram
   end
 
   def renderOn(brush)
+    brush.render :before
     self.moments {|moment|
       moment.renderOn brush
       brush.render :inbetween
     }
+    brush.render :after
   end
 end

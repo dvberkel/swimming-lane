@@ -17,7 +17,13 @@ class AsciiBrush
       @representation << "| "
       arguments[0].renderOn self
       @representation << " | "
+    elsif token == :before
+      lanes {@representation << ".___. "}
+      @representation << "\n"
     elsif token == :inbetween
+      @representation << "\n"
+    elsif token == :after
+      lanes {@representation << "|___| "}
       @representation << "\n"
     end
   end

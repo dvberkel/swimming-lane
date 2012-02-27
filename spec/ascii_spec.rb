@@ -34,6 +34,6 @@ describe "An ascii brush" do
     
     diagram.renderOn brush
 
-    brush.to_s.should == "| * | |   | \n|   | | * | \n"
+    brush.to_s.should == ".___. .___. \n| * | |   | \n|   | | * | \n|___| |___| \n"
   end
 end
