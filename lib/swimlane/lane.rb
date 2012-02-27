@@ -11,6 +11,7 @@ class Lane
 
   def transitionTo(lane)
     @transition = Transition.new(self, lane)
+    self
   end
 
   def renderOn(brush)

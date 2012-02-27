@@ -21,7 +21,7 @@ describe "A lane" do
     any = Lane.new("any")
     other = Lane.new("other")
     
-    any.transitionTo(Lane.new("other"))
+    any = any.transitionTo(Lane.new("other"))
 
     any.transition.should == Transition.new(any, other)
   end
