@@ -21,7 +21,7 @@ class Moment
 
   def flowTo(moment)
     flow = Flow.new(nextLane(inFlow.lane))
-    outFlow = flow
+    @outFlow = flow
     moment.inFlow = flow
   end
 
@@ -41,11 +41,13 @@ class Moment
   end
 
   def renderOn(brush)
+    brush.render :inbetween
     brush.lanes { |this|
       lane = self.laneLike this
       lane.renderOn brush
       brush.render :transition, @transitions.has_key?(lane)
     }
+    brush.render :inbetween
     outFlow.renderOn brush
   end
 end

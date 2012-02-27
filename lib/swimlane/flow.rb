@@ -5,6 +5,9 @@ class Flow
   end
 
   def renderOn(brush)
+    brush.lanes {|lane|
+      brush.render :flow, @lane == lane
+    }
   end
 end
 

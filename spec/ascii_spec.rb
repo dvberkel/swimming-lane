@@ -22,7 +22,7 @@ describe "An ascii brush" do
     
     Moment.new(Lane.new("a",Screen.new("any"))).renderOn brush
 
-    brush.to_s.should == "| * | |   | "
+    brush.to_s.should == "\n| * | |   | \n"
   end
 
   it "should brush Diagrams in order of Moments" do
@@ -37,6 +37,7 @@ describe "An ascii brush" do
     brush.to_s.should == <<DESCRIPTION
 .___. .___. 
 | * | |   | 
+|   | |   | 
 |   | | * | 
 |___| |___| 
 DESCRIPTION

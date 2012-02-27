@@ -25,16 +25,8 @@ class AsciiBrush
       @representation << (arguments[0] ? "-" : " ")
     elsif token == :before
       lanes {@representation << ".___. "}
-      @representation << "\n"
     elsif token == :inbetween
       @representation << "\n"
-      currentLane, last = arguments[0], arguments[1]
-      if (not last and @lanes.include?(currentLane))
-        @lanes.each {|lane|
-          self.render :flow, currentLane == lane
-        }
-        @representation << "\n"
-      end
     elsif token == :after
       lanes {@representation << "|___| "}
       @representation << "\n"

@@ -22,11 +22,8 @@ class Diagram
 
   def renderOn(brush)
     brush.render :before
-    currentLane, count = @start, 0
     self.moments {|moment|
       moment.renderOn brush
-      currentLane, count = moment.nextLane(currentLane), count + 1
-      brush.render :inbetween, currentLane, count == @moments.length
     }
     brush.render :after
   end
