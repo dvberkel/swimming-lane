@@ -1,9 +1,10 @@
 require 'set'
 
 class Diagram
-  attr_reader :lanes
-  def initialize
+  attr_reader :lanes, :start
+  def initialize(start = NullLane.new)
     @moments = []
+    @start = start
   end
 
   def add(moment)

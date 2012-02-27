@@ -5,7 +5,7 @@ require 'lane'
 
 describe "A diagram" do
   before(:each) do
-    @diagram = Diagram.new()
+    @diagram = Diagram.new(Lane.new("a"))
   end
 
   it "should be created" do
@@ -43,5 +43,9 @@ describe "A diagram" do
     @diagram.moments {|moment| count += 1}
 
     count.should == 2
+  end
+
+  it "should have a start lane" do
+    @diagram.start.should == Lane.new("a")
   end
 end
