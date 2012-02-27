@@ -34,6 +34,7 @@ class Moment
     brush.lanes { |this|
       lane = self.laneLike this
       lane.renderOn brush
+      brush.render :transition, @transitions.has_key?(lane)
     }
   end
 end
