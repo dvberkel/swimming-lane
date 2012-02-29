@@ -90,3 +90,46 @@ This allows us to eventually create a gem from this project.
 We use 
 [rake](http://rake.rubyforge.org/ "Homepage for rake; Ruby Make")
 to automate tasks.
+
+DSL Example
+-----------
+
+Below is an example of how the DSL should look like. As an example the
+impression is described. Note that this is a work in progress so not
+all feature of the impression will be accuratly displayed.
+
+    Diagram("Order")
+      lanes
+        Customer
+        Sales
+        Contracts
+        Legal
+        Fulfillment
+        
+      moments
+        moment
+          screens
+            Customer: Customer submits PO
+            Sales: Rep logs PO, Enters Order
+            Contracts: Contract agents reviews order
+          
+          transfers
+	    Customer -> Sales
+	    Sales -> Contracts
+        
+        moment
+	  screens
+            Contracts: Standard Terms?
+
+	moment
+          screens
+            Contacts: Agent approves order
+            Fullfillment: Pick order, log shipment
+
+          transfers
+	      Contracts -> Fullfillment
+
+        moment
+          screens
+	    Fulfillment: Order is shipped
+            
