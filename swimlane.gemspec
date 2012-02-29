@@ -15,6 +15,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rake"
   spec.add_dependency "rspec"
   spec.add_dependency "travis-lint"
+  spec.add_dependency "treetop"
+ 
 
   spec.files = `git ls-files`.split("\n")
   spec.require_path = 'lib'
