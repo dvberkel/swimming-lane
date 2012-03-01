@@ -1,0 +1,9 @@
+require 'treetop'
+
+module DSL
+  grammar Whitespace
+    rule whitespace
+      " "
+    end
+  end
+end
