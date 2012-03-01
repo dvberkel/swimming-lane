@@ -12,5 +12,9 @@ module DSLSpec
     it "should provide a parser'" do
       @parser.should_not == nil
     end
+
+    it "should succesfully parse 'diagram'" do
+      @parser.parse("diagram")
+    end
   end
 end

@@ -7,6 +7,34 @@ module DSL
   module SwimLane
     include Treetop::Runtime
 
+    def root
+      @root ||= :diagram
+    end
+
+    def _nt_diagram
+      start_index = index
+      if node_cache[:diagram].has_key?(index)
+        cached = node_cache[:diagram][index]
+        if cached
+          cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+          @index = cached.interval.end
+        end
+        return cached
+      end
+
+      if has_terminal?("diagram", false, index)
+        r0 = instantiate_node(SyntaxNode,input, index...(index + 7))
+        @index += 7
+      else
+        terminal_parse_failure("diagram")
+        r0 = nil
+      end
+
+      node_cache[:diagram][start_index] = r0
+
+      r0
+    end
+
   end
 
   class SwimLaneParser < Treetop::Runtime::CompiledParser
