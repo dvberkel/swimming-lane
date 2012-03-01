@@ -9,7 +9,7 @@ module DSLSpec
       @parser = DSL::SwimLaneParser.new
     end
 
-    it "should provide a parser'" do
+    it "should provide a parser" do
       @parser.should_not == nil
     end
 
