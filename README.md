@@ -115,23 +115,23 @@ all feature of the impression will be accuratly displayed.
             Sales: Rep logs PO, Enters Order
             Contracts: Contract agents reviews order
           
-          transfers
-	    Customer -> Sales
-	    Sales -> Contracts
+          transfers 
+            Customer -> Sales
+            Sales -> Contracts
         
         moment
-	  screens
+          screens
             Contracts: Standard Terms?
 
-	moment
+        moment
           screens
             Contacts: Agent approves order
             Fullfillment: Pick order, log shipment
 
           transfers
-	      Contracts -> Fullfillment
+            Contracts -> Fullfillment
 
         moment
           screens
-	    Fulfillment: Order is shipped
+            Fulfillment: Order is shipped
             
