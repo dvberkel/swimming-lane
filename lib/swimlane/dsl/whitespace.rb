@@ -22,15 +22,76 @@ module DSL
         return cached
       end
 
-      if has_terminal?(" ", false, index)
-        r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
-        @index += 1
-      else
-        terminal_parse_failure(" ")
+      s0, i0 = [], index
+      loop do
+        r1 = _nt_single_whitespace
+        if r1
+          s0 << r1
+        else
+          break
+        end
+      end
+      if s0.empty?
+        @index = i0
         r0 = nil
+      else
+        r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
       end
 
       node_cache[:whitespace][start_index] = r0
+
+      r0
+    end
+
+    def _nt_single_whitespace
+      start_index = index
+      if node_cache[:single_whitespace].has_key?(index)
+        cached = node_cache[:single_whitespace][index]
+        if cached
+          cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+          @index = cached.interval.end
+        end
+        return cached
+      end
+
+      i0 = index
+      if has_terminal?(" ", false, index)
+        r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
+        @index += 1
+      else
+        terminal_parse_failure(" ")
+        r1 = nil
+      end
+      if r1
+        r0 = r1
+      else
+        if has_terminal?("\t", false, index)
+          r2 = instantiate_node(SyntaxNode,input, index...(index + 1))
+          @index += 1
+        else
+          terminal_parse_failure("\t")
+          r2 = nil
+        end
+        if r2
+          r0 = r2
+        else
+          if has_terminal?("\n", false, index)
+            r3 = instantiate_node(SyntaxNode,input, index...(index + 1))
+            @index += 1
+          else
+            terminal_parse_failure("\n")
+            r3 = nil
+          end
+          if r3
+            r0 = r3
+          else
+            @index = i0
+            r0 = nil
+          end
+        end
+      end
+
+      node_cache[:single_whitespace][start_index] = r0
 
       r0
     end
