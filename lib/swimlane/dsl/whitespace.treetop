@@ -3,11 +3,15 @@ require 'treetop'
 module DSL
   grammar Whitespace
     rule whitespace
-      single_whitespace+
+      single_whitespace+ / empty
     end
 
     rule single_whitespace
       " " / "\t" / "\n"
-    end    
+    end
+
+    rule empty
+      ""
+    end
   end
 end

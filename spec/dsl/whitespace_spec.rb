@@ -40,5 +40,9 @@ module WhiteSpaceSpec
     it "should parse any combination of whitespace" do
       @parser.parse("  \t\t \n\t\n\n ").should_not == nil
     end
+
+    it "should even parse no character" do
+      @parser.parse("").should_not == nil
+    end
   end
 end

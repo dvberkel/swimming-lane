@@ -22,20 +22,32 @@ module DSL
         return cached
       end
 
-      s0, i0 = [], index
+      i0 = index
+      s1, i1 = [], index
       loop do
-        r1 = _nt_single_whitespace
-        if r1
-          s0 << r1
+        r2 = _nt_single_whitespace
+        if r2
+          s1 << r2
         else
           break
         end
       end
-      if s0.empty?
-        @index = i0
-        r0 = nil
+      if s1.empty?
+        @index = i1
+        r1 = nil
       else
-        r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+        r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
+      end
+      if r1
+        r0 = r1
+      else
+        r3 = _nt_empty
+        if r3
+          r0 = r3
+        else
+          @index = i0
+          r0 = nil
+        end
       end
 
       node_cache[:whitespace][start_index] = r0
@@ -92,6 +104,30 @@ module DSL
       end
 
       node_cache[:single_whitespace][start_index] = r0
+
+      r0
+    end
+
+    def _nt_empty
+      start_index = index
+      if node_cache[:empty].has_key?(index)
+        cached = node_cache[:empty][index]
+        if cached
+          cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+          @index = cached.interval.end
+        end
+        return cached
+      end
+
+      if has_terminal?("", false, index)
+        r0 = instantiate_node(SyntaxNode,input, index...(index + 0))
+        @index += 0
+      else
+        terminal_parse_failure("")
+        r0 = nil
+      end
+
+      node_cache[:empty][start_index] = r0
 
       r0
     end
