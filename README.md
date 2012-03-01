@@ -1,6 +1,8 @@
 Swimming Lane
 =============
 
+[![Build Status](https://secure.travis-ci.org/dvberkel/swimming-lane.png)](http://travis-ci.org/dvberkel/swimming-lane)
+
 A co-worker showed my some diagrams he created by hand. It is a kind
 of flow diagram he uses to get a feel for the overal flow of an
 application. With these diagrams one is able to reason about a process
