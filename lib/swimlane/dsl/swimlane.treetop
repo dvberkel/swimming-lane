@@ -1,9 +1,12 @@
 require 'treetop'
+require 'whitespace'
 
 module DSL
   grammar SwimLane
+    include DSL::Whitespace
+    
     rule diagram
-      "diagram"
+      whitespace "diagram" whitespace
     end
   end
 end

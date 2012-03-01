@@ -2,6 +2,7 @@
 
 
 require 'treetop'
+require 'whitespace'
 
 module DSL
   module SwimLane
@@ -9,6 +10,18 @@ module DSL
 
     def root
       @root ||= :diagram
+    end
+
+    include DSL::Whitespace
+
+    module Diagram0
+      def whitespace1
+        elements[0]
+      end
+
+      def whitespace2
+        elements[2]
+      end
     end
 
     def _nt_diagram
@@ -22,11 +35,28 @@ module DSL
         return cached
       end
 
-      if has_terminal?("diagram", false, index)
-        r0 = instantiate_node(SyntaxNode,input, index...(index + 7))
-        @index += 7
+      i0, s0 = index, []
+      r1 = _nt_whitespace
+      s0 << r1
+      if r1
+        if has_terminal?("diagram", false, index)
+          r2 = instantiate_node(SyntaxNode,input, index...(index + 7))
+          @index += 7
+        else
+          terminal_parse_failure("diagram")
+          r2 = nil
+        end
+        s0 << r2
+        if r2
+          r3 = _nt_whitespace
+          s0 << r3
+        end
+      end
+      if s0.last
+        r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+        r0.extend(Diagram0)
       else
-        terminal_parse_failure("diagram")
+        @index = i0
         r0 = nil
       end
 

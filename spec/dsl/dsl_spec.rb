@@ -14,7 +14,11 @@ module DSLSpec
     end
 
     it "should succesfully parse 'diagram'" do
-      @parser.parse("diagram")
+      @parser.parse("diagram").should_not == nil
+    end
+
+    it "should succesfully parse '\\n\\tdiagram \\n'" do
+      @parser.parse("\n\tdiagram \n").should_not == nil
     end
   end
 end
